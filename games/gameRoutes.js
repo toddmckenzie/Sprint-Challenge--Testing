@@ -12,7 +12,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    console.log(req.body)
+    const game = { ...req.body }
+    console.log(game)
     if (!req.body.title || !req.body.genre) {
         res.status(422).json({ message: 'please input appropriate data.'})
     }
@@ -26,4 +27,6 @@ router.post('/', (req, res) => {
         })
 
 })
+
 module.exports = router;
+
