@@ -12,18 +12,17 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const game = { ...req.body }
-    console.log(game)
-    if (!req.body.title || !req.body.genre) {
-        res.status(422).json({ message: 'please input appropriate data.'})
-    }
+    console.log(req.body)
+    // if (!req.body.title || !req.body.genre) {
+    //     res.status(422).json({ message: 'please input appropriate data.'})
+    // }
     gM.add(req.body)
         .then(result => {
             res.status(201).json(result)
         })
         .catch(error => {
             console.error(error)
-            res.status(500).json({ message: 'Internal server error'})
+            res.status(500).json(error)
         })
 
 })
