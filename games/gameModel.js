@@ -1,4 +1,4 @@
-const db = require('../database/dbConfig');
+const db = require('../database/dbConfig.js');
 
 module.exports = {
     findAll,
@@ -9,6 +9,8 @@ function findAll() {
     return db('games')
 }
 
-function add(game) {
-    return db('games').insert(game)
+async function add(game) {
+    const [id] = await db('games').insert(game);
+
+    return id;
 }

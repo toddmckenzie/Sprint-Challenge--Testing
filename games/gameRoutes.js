@@ -12,8 +12,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    let { title, genre } = req.body;
-    if (!title || !genre) {
+    console.log(req.body)
+    if (!req.body.title || !req.body.genre) {
         res.status(422).json({ message: 'please input appropriate data.'})
     }
     gM.add(req.body)
@@ -21,6 +21,7 @@ router.post('/', (req, res) => {
             res.status(201).json(result)
         })
         .catch(error => {
+            console.error(error)
             res.status(500).json({ message: 'Internal server error'})
         })
 
