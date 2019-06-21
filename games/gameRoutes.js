@@ -3,8 +3,12 @@ const gM = require('./gameModel.js');
 
 router.get('/', (req, res) => {
     gM.findAll()
-        .then()
-        .catch()
+        .then(result => {
+            res.status(200).json(result)
+        })
+        .catch(error => {
+            res.status(500).json({ message: 'Internal server error'})
+        })
 })
 
 router.post('/', (req, res) => {
